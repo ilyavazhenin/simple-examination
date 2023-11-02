@@ -1,7 +1,12 @@
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import { useSelector } from 'react-redux';
 
 const Questions = () => {
+  const questions = useSelector((state) => state.questions.questions);
+  const currentQuestion = questions.find((question) => question.questionStatus === 'being asked');
+  console.log(questions, 'QUESTIONS');
+  console.log(currentQuestion, 'id active');
   return (
     <section>
       <Box

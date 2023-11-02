@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const fetchExistedQuestions = createAsyncThunk(
   'questions/getExistedQuestionsData',
-  async (user) => {
-    const response = await axios({ method: 'get', url: 'someURL', headers: { Authorization: `Bearer ${user?.token}` } });
+  async () => {
+    const response = await axios({ method: 'get', url: 'someURL' });
     return response.data;
   },
 );
@@ -23,6 +23,14 @@ const initialState = questionsAdapter.getInitialState({
     id: 2,
     name: 'test question 2',
     description: 'long descr 2 long descr 2 long descr 2 long descr 2 long descr',
+    isRightAnswerKnown: false,
+    rightAnswer: null, // need to be checked later on frontend after user's job
+    questionStatus: 'not asked', // answered right, answered wrong
+  },
+  {
+    id: 3,
+    name: '3 test question 3',
+    description: 'long param param pam 3',
     isRightAnswerKnown: false,
     rightAnswer: null, // need to be checked later on frontend after user's job
     questionStatus: 'not asked', // answered right, answered wrong
